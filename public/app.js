@@ -1,6 +1,7 @@
 ///// User Authentication /////
 
-const auth = firebase.auth();
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+const auth = getAuth();
 
 const whenSignedIn = document.getElementById('whenSignedIn');
 const whenSignedOut = document.getElementById('whenSignedOut');
@@ -20,16 +21,27 @@ signInBtn.onclick = () => auth.signInWithPopup(provider);
 
 signOutBtn.onclick = () => auth.signOut();
 
-auth.onAuthStateChanged(user => {
-    if (user) {
-        // signed in
-        whenSignedIn.hidden = false;
-        whenSignedOut.hidden = true;
-        userDetails.innerHTML = `<h3>Hello ${user.displayName}!</h3> <p>User ID: ${user.uid}</p>`;
-    } else {
-        // not signed in
-        whenSignedIn.hidden = true;
-        whenSignedOut.hidden = false;
-        userDetails.innerHTML = '';
-    }
-});
+signInWithPopup(auth, provider)
+  .then((result) => {
+
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
+
+  function func(){
+    alert();
+    
+  }

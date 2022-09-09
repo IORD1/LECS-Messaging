@@ -14,6 +14,10 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
   
     <script>
+      import { initializeApp } from 'firebase/app';
+      import { getAuth } from "firebase/auth";
+
+      // TODO: Replace the following with your app's Firebase project configuration
       const firebaseConfig = {
         apiKey: "AIzaSyAbEc5jQBHJ22W0Oe69Foh_kXH9iSGaf38",
         authDomain: "lecs-messaging.firebaseapp.com",
@@ -22,20 +26,28 @@
         messagingSenderId: "539453436104",
         appId: "1:539453436104:web:e0a5a4e793f40b04f4f5fd"
       };
-      firebase.initializeApp(firebaseConfig);
+
+      const app = initializeApp(firebaseConfig);
     </script>
     <script src="app.js" defer></script>
     </head>
     <body>
-        <h1>Awesome app </h1>
+       
+      <h1>My Awesome App 🔥</h1>
 
-        <section id="whenSignedOut">
-          <button id="signInBtn" class="btn btn-primary">Sign in with google</button>
-        </section>
+      <section id="whenSignedOut">
 
-        <section id="whenSignedIn" hidden="true">
-          div
-        </section>
+        <button id="signInBtn" class="btn btn-primary" >Sign in with Google</button>
+
+      </section>
+
+      <section id="whenSignedIn" hidden="true">
+
+        <div id="userDetails"></div>
+
+        <button id="signOutBtn" class="btn btn-primary">Sign Out</button>
+
+      </section>
 
         
     </body>
