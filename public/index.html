@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
+      integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
+      crossorigin="anonymous"></script>
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyAbEc5jQBHJ22W0Oe69Foh_kXH9iSGaf38",
+        authDomain: "lecs-messaging.firebaseapp.com",
+        projectId: "lecs-messaging",
+        storageBucket: "lecs-messaging.appspot.com",
+        messagingSenderId: "539453436104",
+        appId: "1:539453436104:web:e0a5a4e793f40b04f4f5fd"
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="app.js" defer></script>
+    </head>
+    <body>
+        <h1>Awesome app </h1>
+
+        <section id="whenSignedOut">
+          <button id="signInBtn" class="btn btn-primary">Sign in with google</button>
+        </section>
+
+        <section id="whenSignedIn" hidden="true">
+          div
+        </section>
+
+        
+    </body>
+</html>
