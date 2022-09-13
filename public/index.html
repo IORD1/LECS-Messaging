@@ -25,7 +25,7 @@
 
     <div id="userDetails"></div>
 
-    <button id="signOutBtn" class="btn btn-primary">Sign Out</button>
+    <button id="signOutBtn" class="btn btn-primary" onclick="func()">Sign Out</button>
 
   </section>
 
@@ -38,7 +38,8 @@
       GoogleAuthProvider,
       signInWithRedirect,
       getRedirectResult,
-      signInWithPopup
+      signInWithPopup,
+      signOut
     } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js";
 
 
@@ -98,6 +99,10 @@
         userDetails.innerHTML = '';
       }
     });
+
+    function func(){
+      alert();
+    }
     signOutBtn.onclick = () => auth.signOut();
 
   </script>
