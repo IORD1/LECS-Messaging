@@ -1,6 +1,4 @@
-window.onload = function() {
-    func();
-};
+
 
 const splash = document.querySelector('.splash');
 
@@ -11,9 +9,6 @@ document.addEventListener('DOMContentLoaded',(e) => {
 })
 
 
-function func(){
- 
-}
 
 
 
