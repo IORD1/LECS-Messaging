@@ -90,6 +90,7 @@ expermient splash screen*/
 #p{
     height: 80vh;
     width: 100vw;
+    animation: up1 4s forwards;
 }
 
 #box{
@@ -101,6 +102,8 @@ expermient splash screen*/
     border-radius: 80px 80px 0px 0px;
     padding-top: 40px;
     text-align: center;
+    animation: up 4s forwards;
+    opacity: 0;
 }
 #boxup{
   width: 100%;
@@ -126,4 +129,31 @@ expermient splash screen*/
   line-height: 40px;
   color: white;
   margin-top: 20px;
+}
+@keyframes up1{
+  0%{
+    height: 100vh;
+  }
+  50%{
+    height: 100vh;
+  }
+  100% {
+    height: 80vh;
+
+  }
+}
+
+@keyframes up{
+  0%{
+    opacity: 0;
+    height: 0vh;
+  }
+  50%{
+    opacity: 0;
+    height: 0vh;
+  }
+  100% {
+    opacity: 1;
+    height: 20vh;
+  }
 }
