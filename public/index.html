@@ -29,10 +29,11 @@
   <section id="whenSignedOut">
     <div id="head">
       <div id="p">
-      <p id="p1">Linear </p>
-      <p id="p2">Elliptic </p>
-      <p id="p3">Curve Signaturing </p>
-      <p id="p4">Messaing App</p>
+      <p id="p1">Linear </p><hr>
+      <p id="p2">Elliptic </p><hr>
+      <p id="p3">Curve </p><hr>
+      <p id="p3">Signaturing </p><hr>
+      <p id="p4">Messaing App</p><hr>
     </div>
       <div id="box">
         <div id="boxup">
@@ -40,7 +41,13 @@
           
         </div>
         <p class="box-down-p">signup to save your data and chat with other people </p>
+        <hr>
+        <div id='by-box'>
+          Designed and Coded by Pratham-_-
+          <p class='by-pratham'>Find here same project in React : <a href="https://github.com/IORD1" target="_blank">Github</a></p>  
+        </div>
       </div>
+
     </div>
    
 
@@ -53,7 +60,13 @@
     </div>
     <div id="userDetails"></div>
 
-    <button id="signOutBtn" class="btn btn-primary" onclick="func()">Sign Out</button>
+    <div id="header">
+      <button id="search" class="btn btn-primary header-btn">S</button>
+      <button id="lock" class="btn btn-primary header-btn">L</button>
+      <button id="signOutBtn" class="btn btn-primary header-btn" onclick="func()">Sign Out</button>
+
+    </div>
+
 
   </section>
 
@@ -117,13 +130,13 @@
     auth.onAuthStateChanged(user => {
       if (user) {
         // signed in
-        whenSignedIn.hidden = false;
-        whenSignedOut.hidden = true;
+        whenSignedIn.hidden = true;
+        whenSignedOut.hidden = false;
         userDetails.innerHTML = `<h3>Hello ${user.displayName}!</h3> <p>User ID: ${user.uid}</p>`;
       } else {
         // not signed in
-        whenSignedIn.hidden = true;
-        whenSignedOut.hidden = false;
+        whenSignedIn.hidden = false;
+        whenSignedOut.hidden = true;
         userDetails.innerHTML = '';
       }
     });
