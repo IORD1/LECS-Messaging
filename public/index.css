@@ -162,7 +162,7 @@ expermient splash screen*/
     height: 100vh;
   }
   100% {
-    height: 70vh;
+    height: 65vh;
 
   }
 }
@@ -178,7 +178,7 @@ expermient splash screen*/
   }
   100% {
     opacity: 1;
-    height: 30vh;
+    height: 35vh;
   }
 }
 
