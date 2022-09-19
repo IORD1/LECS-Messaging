@@ -200,6 +200,9 @@ expermient splash screen*/
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #596e66;
+  border: none;
+  font-family: 'Quantico', sans-serif;
 }
 
 .header-btn span{
@@ -210,6 +213,38 @@ expermient splash screen*/
   width: 45%;
   margin-right: 20px;
 }
+
+#hello{
+  height: 0vh;
+  width: 100vw;
+  background-color: #91b4a6;
+  border-radius: 0px 0px 100px 100px;
+  font-size: 60px;
+  text-align: center;
+  animation: down  4s forwards;
+  font-family: 'Quantico', sans-serif;
+}
+
+
+@keyframes down{
+  0%{
+    opacity: 0;
+    height: 0vh;
+  }
+  50%{
+    opacity: 0;
+    height: 0vh;
+  }
+  100% {
+    opacity: 1;
+    height: 20vh;
+  }
+}
+
+
+
+
+
 
 .material-symbols-outlined {
   font-variation-settings:

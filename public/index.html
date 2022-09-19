@@ -54,23 +54,29 @@
   </section>
 
   <section id="whenSignedIn" hidden="true">
-
-    <div id="mainpage">
-
-    </div>
-    <div id="userDetails"></div>
-
-    <div id="header">
-      <button id="search" class="btn btn-primary header-btn">
-        <span class="material-symbols-outlined">
-          search
+  
+  
+  
+    <div id="hello">
+      <div id="header">
+        <button id="search" class="btn btn-primary header-btn">
+          <span class="material-symbols-outlined">
+            search
           </span>
-      </button>
-      <button id="lock" class="btn btn-primary header-btn">
-        <span class="material-symbols-outlined">
-        lock
-        </span></button>
-      <button id="signOutBtn" class="btn btn-primary header-btn" onclick="func()">Sign Out</button>
+        </button>
+        <button id="lock" class="btn btn-primary header-btn">
+          <span class="material-symbols-outlined">
+            lock
+          </span></button>
+        <button id="signOutBtn" class="btn btn-primary header-btn" onclick="func()">Sign Out</button>
+        
+      </div>
+      <div id="mainpage">
+
+      </div>
+      <div id="userDetails">
+        Hello pratham
+      </div>
 
     </div>
 
@@ -139,7 +145,7 @@
         // signed in
         whenSignedIn.hidden = false;
         whenSignedOut.hidden = true;
-        userDetails.innerHTML = `<h3>Hello ${user.displayName}!</h3> <p>User ID: ${user.uid}</p>`;
+        userDetails.innerHTML = `<p>Hello ${user.displayName}!</p> `;
       } else {
         // not signed in
         whenSignedIn.hidden = true;
@@ -159,3 +165,11 @@
 </body>
 
 </html>
+
+
+
+
+
+
+<!-- 
+<p>User ID: ${user.uid}</p> -->
