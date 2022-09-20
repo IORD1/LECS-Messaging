@@ -72,12 +72,14 @@
         
       </div>
       <div id="mainpage">
+        <div id="userDetails">
+          Hello pratham
+        </div>
+        <div id="dp">
+          <img src="" id="userdp">
+        </div>
 
       </div>
-      <div id="userDetails">
-        Hello pratham
-      </div>
-
     </div>
 
 
@@ -145,7 +147,9 @@
         // signed in
         whenSignedIn.hidden = false;
         whenSignedOut.hidden = true;
-        userDetails.innerHTML = `<p>Hello ${user.displayName}!</p> `;
+        userDetails.innerHTML = `<p>Hello ${user.displayName.split(" ")[0]} !</p> `;
+        userdp.src = user.photoURL;
+        console.log(user);
       } else {
         // not signed in
         whenSignedIn.hidden = true;
