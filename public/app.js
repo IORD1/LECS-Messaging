@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded',(e) => {
     },1000);
 })
 
-document.getElementById("#")
+document.getElementById("#googleBtn").onclick = 
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js";
