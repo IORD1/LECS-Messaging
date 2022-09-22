@@ -1,4 +1,4 @@
- 
+
 console.log(1);
 const splash = document.querySelector('.splash');
 
@@ -8,14 +8,6 @@ document.addEventListener('DOMContentLoaded',(e) => {
     },1000);
 })
 
-console.log(2);
-
-// // Import the functions you need from the SDKs you need
-console.log(3);
-
-
-
-// document.getElementById("#googleBtn").addEventListener('click', (e) => {
 
 
 
