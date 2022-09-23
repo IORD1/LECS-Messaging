@@ -84,9 +84,16 @@
 
 
   </section>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
   <script type="module">
-      import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js";
+        
+      import {initializeApp ,addDoc} from "https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js";
+      import {
+        collection,
+      } from "https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js";
+      
       import {
       getAuth,
       GoogleAuthProvider,
@@ -94,7 +101,7 @@
       getRedirectResult,
       signInWithPopup,
       signOut
-    } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js";
+      } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js";
     console.log("imported");
     
     const firebaseConfig = {
@@ -110,10 +117,10 @@
   const app = initializeApp(firebaseConfig);
   const provider = new GoogleAuthProvider(app);
   const auth = getAuth(app);
-  console.log(4);
+// Required for side-effects
 
 
-  document.getElementById("#googleBtn").addEventListener('click', (e) => {
+googleBtn.addEventListener('click', (e) => {
 
 
     signInWithPopup(auth, provider)
