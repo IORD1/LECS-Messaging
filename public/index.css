@@ -1,6 +1,10 @@
 
 /* 
 expermient splash screen*/
+body{
+  background-color:  rgb(221, 198, 244);;
+}
+
 
 .splash{
     position: fixed;
@@ -182,6 +186,8 @@ expermient splash screen*/
   }
 }
 
+
+
 #header{
   display: flex;
   background-color: #a0c6b6;
@@ -225,20 +231,23 @@ expermient splash screen*/
   font-family: 'Quantico', sans-serif;
 }
 
-
+#greet{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: showup  4s forwards;
+}
 
 
 #userDetails{
   margin-top: 10px;
   margin-right: 20px;
+  height: 100%;
+
   animation: showup  4s forwards;
 }
 
-#mainpage{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 #userdp{
   height: 75px;
@@ -276,8 +285,47 @@ expermient splash screen*/
   }
   100% {
     opacity: 1;
-    height: 75px;
+    height: 8vh;
   }
+}
+
+#display{
+  height: 69vh;
+  width: 100%;
+}
+
+#footer{
+  height: 10vh;
+  width: 100%;
+  background-color: #a0c6b6;
+  border-radius: 100px 100px 0px 0px;
+  display: flex;
+
+  
+}
+
+#sendinput{
+  height: 85%;
+  width: 75%;
+  border-radius: 100px;
+  border: none;
+  background-color: white;
+  margin: 15px auto auto 20px;
+  padding-left: 30px;
+}
+
+#send{
+  height: 85%;
+  width: 20%;
+  font-size: 60px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #596e66;
+  border: none;
+  font-family: 'Quantico', sans-serif;
+  margin: 15px 20px auto auto;
 }
 
 
