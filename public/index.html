@@ -175,7 +175,7 @@ googleBtn.addEventListener('click', (e) => {
       document.getElementById("whenSignedOut").hidden = true;
       document.getElementById("userDetails").innerHTML = `<p>Hello ${user.displayName.split(" ")[0]} !</p> `;
       document.getElementById("userdp").src = user.photoURL;
-      console.log(user);
+      
     } else {
       // not signed in
       document.getElementById("whenSignedIn").hidden = true;
@@ -184,15 +184,15 @@ googleBtn.addEventListener('click', (e) => {
     }
   });
 
-  try {
-  const docRef = await addDoc(collection(db, "test"), {
-    name : "kuna",
-    sender : user.displayName
-  });
-  console.log("Document written with ID: ", docRef.id);
-} catch (e) {
-  console.error("Error adding document: ", e);
-}
+
+  // try {
+  //     const docRef = await addDoc(collection(db, "test"), {
+  //     sender : user.displayName
+  //       });
+  //     console.log("Document written with ID: ", docRef.id);
+  //   } catch (e) {
+  //     console.error("Error adding document: ", e);
+  //   }
 
 const querySnapshot = await getDocs(collection(db, "test"));
 querySnapshot.forEach((doc) => {
