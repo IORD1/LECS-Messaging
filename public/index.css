@@ -229,14 +229,14 @@ body{
   background-color: #a0c6b6;
   border-radius: 0px 0px 100px 100px;
   padding-bottom: 20px;
-  height: 80%;
+  height: 65%;
 
 }
 #greet{
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 20%;
+  height: 35%;
 
 }
 
@@ -295,12 +295,12 @@ body{
 }
 
 #display{
-  height: 80%;
+  height: 95%;
   width: 100%;
 }
 
 #footer{
-  height: 20%;
+  height: 150px;
   width: 100%;
   background-color: #a0c6b6;
   border-radius: 100px 100px 0px 0px;

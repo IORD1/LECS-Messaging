@@ -186,7 +186,8 @@ googleBtn.addEventListener('click', (e) => {
 
   try {
   const docRef = await addDoc(collection(db, "test"), {
-    name : "kuna"
+    name : "kuna",
+    sender : user.displayName
   });
   console.log("Document written with ID: ", docRef.id);
 } catch (e) {
@@ -195,7 +196,7 @@ googleBtn.addEventListener('click', (e) => {
 
 const querySnapshot = await getDocs(collection(db, "test"));
 querySnapshot.forEach((doc) => {
-  console.log(`${doc.id} => ${doc.data().name}`);
+  console.log(`${doc.data().sender} => ${doc.data().name}`);
 });
 
   document.getElementById("signOutBtn").onclick = () => auth.signOut();
