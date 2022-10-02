@@ -108,7 +108,7 @@
         
       import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js";
       import {
-        getFirestore,collection,addDoc,getDocs
+        getFirestore,collection,addDoc,doc,setDoc,getDocs
       } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js";
       import {
       getAuth,
@@ -175,7 +175,7 @@ googleBtn.addEventListener('click', (e) => {
       document.getElementById("whenSignedOut").hidden = true;
       document.getElementById("userDetails").innerHTML = `<p>Hello ${user.displayName.split(" ")[0]} !</p> `;
       document.getElementById("userdp").src = user.photoURL;
-      
+     
     } else {
       // not signed in
       document.getElementById("whenSignedIn").hidden = true;
@@ -193,11 +193,26 @@ googleBtn.addEventListener('click', (e) => {
   //   } catch (e) {
   //     console.error("Error adding document: ", e);
   //   }
+ // Add a new document in collection "cities"
 
-const querySnapshot = await getDocs(collection(db, "test"));
-querySnapshot.forEach((doc) => {
-  console.log(`${doc.data().sender} => ${doc.data().name}`);
-});
+
+ setTimeout(function(){
+        console.log(user);
+        console.log(user.displayName);
+          const docRef = await addDoc(collection(db, "test"), {
+          name: "yook",
+          sendern:user.displayName
+
+      });
+      const querySnapshot = await getDocs(collection(db, "test"));
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.data().sendern, " => ", doc.data().name);
+      });
+    }, 3000);
+
+
+
 
   document.getElementById("signOutBtn").onclick = () => auth.signOut();
 
