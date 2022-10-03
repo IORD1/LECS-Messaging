@@ -93,7 +93,7 @@
 
       <div id="footer">
         <input type="text" name="input" id="sendinput" placeholder="Write here">
-        <button id="send" class="btn btn-primary send-btn">
+        <button id="send" class="btn btn-primary send-btn" >
 
       </div>
 
@@ -195,21 +195,29 @@ googleBtn.addEventListener('click', (e) => {
   //   }
  // Add a new document in collection "cities"
 
+ document.getElementById("send").onclick = sendtext();
 
- setTimeout(function(){
-        console.log(user);
-        console.log(user.displayName);
-          const docRef = await addDoc(collection(db, "test"), {
-          name: "yook",
-          sendern:user.displayName
+  function sendtext(){
+    var user = auth.currentUser;
+    alert();
+    console.log(user.displayName);
+    var inputext = document.getElementById("sendinput").value;
+    console.log(user.displayName,'=>',inputext);
+  }
 
-      });
-      const querySnapshot = await getDocs(collection(db, "test"));
-      querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.data().sendern, " => ", doc.data().name);
-      });
-    }, 3000);
+  //   console.log(user);
+  //   console.log(user.displayName);
+  //     const docRef = await addDoc(collection(db, "test"), {
+  //     name: "yook",
+  //     sendern:user.displayName
+
+  // });
+  // const querySnapshot = await getDocs(collection(db, "test"));
+  // querySnapshot.forEach((doc) => {
+  //   // doc.data() is never undefined for query doc snapshots
+  //   console.log(doc.data().sendern, " => ", doc.data().name);
+  // });
+  
 
 
 
