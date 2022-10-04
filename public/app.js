@@ -25,8 +25,6 @@ document.addEventListener('DOMContentLoaded',(e) => {
 
 
 
-
-
 // var theme =  Math.floor(Math.random() * 16777215).toString(16);
 // var url = 'https://www.thecolorapi.com/scheme?hex=' + theme;
 // fetch(url)
