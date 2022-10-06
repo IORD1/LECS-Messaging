@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <script src="index.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
@@ -13,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Quantico&family=Silkscreen&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <script src="app.js" defer></script>
-    <script src="index.js"></script>
+    
 </head>
 
 <body>
@@ -95,7 +96,7 @@
       <div id="footer">
         <input type="text" name="input" id="sendinput" placeholder="Write here">
         <button id="send" class="btn btn-primary send-btn" onclick="sendtext()">
-
+      
       </div>
 
     </div>
@@ -172,18 +173,20 @@ googleBtn.addEventListener('click', (e) => {
   auth.onAuthStateChanged(user => {
     if (user) {
       // signed in
-      document.getElementById("whenSignedIn").hidden = false;
-      document.getElementById("whenSignedOut").hidden = true;
+      document.getElementById("whenSignedIn").hidden = true;
+      document.getElementById("whenSignedOut").hidden = false;
       document.getElementById("userDetails").innerHTML = `<p>Hello ${user.displayName.split(" ")[0]} !</p> `;
       document.getElementById("userdp").src = user.photoURL;
      
     } else {
       // not signed in
-      document.getElementById("whenSignedIn").hidden = true;
-      document.getElementById("whenSignedOut").hidden = false;
+      document.getElementById("whenSignedIn").hidden = false;
+      document.getElementById("whenSignedOut").hidden = true;
       document.getElementById("userDetails").innerHTML = '';
     }
   });
+
+
 
 
 
