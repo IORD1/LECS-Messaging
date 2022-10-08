@@ -4,14 +4,23 @@
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
-    integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
-    crossorigin="anonymous"></script>
     <link rel="stylesheet" href="index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quantico&family=Silkscreen&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <!-- update the version number as needed -->
+        <script defer src="/__/firebase/9.11.0/firebase-app-compat.js"></script>
+        <!-- include only the Firebase features as you need -->
+        <script defer src="/__/firebase/9.11.0/firebase-auth-compat.js"></script>
+        <script defer src="/__/firebase/9.11.0/firebase-database-compat.js"></script>
+        <script defer src="/__/firebase/9.11.0/firebase-firestore-compat.js"></script>
+        <script defer src="/__/firebase/9.11.0/firebase-functions-compat.js"></script>
+        <script defer src="/__/firebase/9.11.0/firebase-messaging-compat.js"></script>
+        <script defer src="/__/firebase/9.11.0/firebase-storage-compat.js"></script>
+        <script defer src="/__/firebase/9.11.0/firebase-analytics-compat.js"></script>
+        <script defer src="/__/firebase/9.11.0/firebase-remote-config-compat.js"></script>
+        <script defer src="/__/firebase/9.11.0/firebase-performance-compat.js"></script>
     <script src="app.js" defer></script>
     <script src="index.js"></script>
 
@@ -103,136 +112,7 @@
 
 
   </section>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
-  <script type="module">
-        
-      import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js";
-      import {
-        getFirestore,collection,addDoc,doc,setDoc,getDocs
-      } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js";
-      import {
-      getAuth,
-      GoogleAuthProvider,
-      signInWithRedirect,
-      getRedirectResult,
-      signInWithPopup,
-      signOut
-      } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js";
-    console.log("imported");
-    
-    const firebaseConfig = {
-    apiKey: "AIzaSyAbEc5jQBHJ22W0Oe69Foh_kXH9iSGaf38",
-    authDomain: "lecs-messaging.firebaseapp.com",
-    projectId: "lecs-messaging",
-    storageBucket: "lecs-messaging.appspot.com",
-    messagingSenderId: "539453436104",
-    appId: "1:539453436104:web:e0a5a4e793f40b04f4f5fd"
-  };
-
-  // // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const provider = new GoogleAuthProvider(app);
-  const auth = getAuth(app);
-// Required for side-effects
-
-// Initialize Cloud Firestore and get a reference to the service
-const db = getFirestore(app);
-
-
-googleBtn.addEventListener('click', (e) => {
-
-
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-        // name = displayName
-        // email = email
-        // photo = photoURL
-
-        // ...
-      }).catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
-        alert(errorMessage);
-      });
-  });
-  console.log(5);
-
-  auth.onAuthStateChanged(user => {
-    if (user) {
-      // signed in
-      document.getElementById("whenSignedIn").hidden = false;
-      document.getElementById("whenSignedOut").hidden = true;
-      document.getElementById("userDetails").innerHTML = `<p>Hello ${user.displayName.split(" ")[0]} !</p> `;
-      document.getElementById("userdp").src = user.photoURL;
-     
-    } else {
-      // not signed in
-      document.getElementById("whenSignedIn").hidden = true;
-      document.getElementById("whenSignedOut").hidden = false;
-      document.getElementById("userDetails").innerHTML = '';
-    }
-  });
-
-
-
-
-
-
-  // try {
-  //     const docRef = await addDoc(collection(db, "test"), {
-  //     sender : user.displayName
-  //       });
-  //     console.log("Document written with ID: ", docRef.id);
-  //   } catch (e) {
-  //     console.error("Error adding document: ", e);
-  //   }
- // Add a new document in collection "cities"
-
-//  document.getElementById("send").onclick = sendtext();
-
-
-//   function sendtext(){
-//     var user = auth.currentUser;
-//     alert();
-//     console.log(user.displayName);
-//     var inputext = document.getElementById("sendinput").value;
-//     console.log(user.displayName,'=>',inputext);
-//   }
-
-  //   console.log(user);
-  //   console.log(user.displayName);
-  //     const docRef = await addDoc(collection(db, "test"), {
-  //     name: "yook",
-  //     sendern:user.displayName
-
-  // });
-  // const querySnapshot = await getDocs(collection(db, "test"));
-  // querySnapshot.forEach((doc) => {
-  //   // doc.data() is never undefined for query doc snapshots
-  //   console.log(doc.data().sendern, " => ", doc.data().name);
-  // });
-  
-
-
-
-
-  document.getElementById("signOutBtn").onclick = () => auth.signOut();
-
-  </script>
- 
 
 
 </body>
