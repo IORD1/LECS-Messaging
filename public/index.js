@@ -35,69 +35,74 @@
 // } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js";
 // console.log("imported");
 
+
+// // // Initialize Firebase
+
+// // Required for side-effects
 const firebaseConfig = {
-apiKey: "AIzaSyAbEc5jQBHJ22W0Oe69Foh_kXH9iSGaf38",
-authDomain: "lecs-messaging.firebaseapp.com",
-projectId: "lecs-messaging",
-storageBucket: "lecs-messaging.appspot.com",
-messagingSenderId: "539453436104",
-appId: "1:539453436104:web:e0a5a4e793f40b04f4f5fd"
-};
+  apiKey: "AIzaSyAbEc5jQBHJ22W0Oe69Foh_kXH9iSGaf38",
+  authDomain: "lecs-messaging.firebaseapp.com",
+  projectId: "lecs-messaging",
+  storageBucket: "lecs-messaging.appspot.com",
+  messagingSenderId: "539453436104",
+  appId: "1:539453436104:web:e0a5a4e793f40b04f4f5fd"
+  };
+  console.log("firebase config done");
 
-// // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const provider = new GoogleAuthProvider(app);
-const auth = getAuth(app);
-// Required for side-effects
-
-// Initialize Cloud Firestore and get a reference to the service
-const db = getFirestore(app);
+  const app = initializeApp(firebaseConfig);
+  const provider = new GoogleAuthProvider(app);
+  const auth = getAuth(app);
 
 
-googleBtn.addEventListener('click', (e) => {
+console.log("adding eventlistner for button")
 
+// // Initialize Cloud Firestore and get a reference to the service
+// const db = getFirestore(app);
 
-signInWithPopup(auth, provider)
-.then((result) => {
-  // This gives you a Google Access Token. You can use it to access the Google API.
-  const credential = GoogleAuthProvider.credentialFromResult(result);
-  const token = credential.accessToken;
-  // The signed-in user info.
-  const user = result.user;
-  // name = displayName
-  // email = email
-  // photo = photoURL
+// googleBtn.addEventListener('click', (e) => {
 
-  // ...
-}).catch((error) => {
-  // Handle Errors here.
-  const errorCode = error.code;
-  const errorMessage = error.message;
-  // The email of the user's account used.
-  const email = error.email;
-  // The AuthCredential type that was used.
-  const credential = GoogleAuthProvider.credentialFromError(error);
-  // ...
-  alert(errorMessage);
-});
-});
-console.log(5);
+// console.log('initiating login process');
+// signInWithPopup(auth, provider)
+// .then((result) => {
+//   // This gives you a Google Access Token. You can use it to access the Google API.
+//   const credential = GoogleAuthProvider.credentialFromResult(result);
+//   const token = credential.accessToken;
+//   // The signed-in user info.
+//   const user = result.user;
+//   // name = displayName
+//   // email = email
+//   // photo = photoURL
 
-auth.onAuthStateChanged(user => {
-if (user) {
-// signed in
-document.getElementById("whenSignedIn").hidden = false;
-document.getElementById("whenSignedOut").hidden = true;
-document.getElementById("userDetails").innerHTML = `<p>Hello ${user.displayName.split(" ")[0]} !</p> `;
-document.getElementById("userdp").src = user.photoURL;
+//   // ...
+// }).catch((error) => {
+//   // Handle Errors here.
+//   const errorCode = error.code;
+//   const errorMessage = error.message;
+//   // The email of the user's account used.
+//   const email = error.email;
+//   // The AuthCredential type that was used.
+//   const credential = GoogleAuthProvider.credentialFromError(error);
+//   // ...
+//   alert(errorMessage);
+// });
+// });
+// console.log('5');
 
-} else {
-// not signed in
-document.getElementById("whenSignedIn").hidden = true;
-document.getElementById("whenSignedOut").hidden = false;
-document.getElementById("userDetails").innerHTML = '';
-}
-});
+// auth.onAuthStateChanged(user => {
+// if (user) {
+// // signed in
+// document.getElementById("whenSignedIn").hidden = false;
+// document.getElementById("whenSignedOut").hidden = true;
+// document.getElementById("userDetails").innerHTML = `<p>Hello ${user.displayName.split(" ")[0]} !</p> `;
+// document.getElementById("userdp").src = user.photoURL;
+
+// } else {
+// // not signed in
+// document.getElementById("whenSignedIn").hidden = true;
+// document.getElementById("whenSignedOut").hidden = false;
+// document.getElementById("userDetails").innerHTML = '';
+// }
+// });
 
 
 
@@ -142,4 +147,4 @@ document.getElementById("userDetails").innerHTML = '';
 
 
 
-document.getElementById("signOutBtn").onclick = () => auth.signOut();
+// document.getElementById("signOutBtn").onclick = () => auth.signOut();
