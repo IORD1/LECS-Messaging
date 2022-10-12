@@ -39,7 +39,7 @@
 // // // Initialize Firebase
 
 // // Required for side-effects
-const firebaseConfig = {
+const firebaseConfig = { 
   apiKey: "AIzaSyAbEc5jQBHJ22W0Oe69Foh_kXH9iSGaf38",
   authDomain: "lecs-messaging.firebaseapp.com",
   projectId: "lecs-messaging",
