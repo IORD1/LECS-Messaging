@@ -1,4 +1,37 @@
 
+import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js';
+import { getAuth, onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/9.11.0/firebase-auth.js';
+import { getFirestore,collection,getDocs,getDoc } from 'https://www.gstatic.com/firebasejs/9.11.0/firebase-firestore.js';
+
+const firebaseapp = initializeApp({
+    apiKey: "AIzaSyAbEc5jQBHJ22W0Oe69Foh_kXH9iSGaf38",
+    authDomain: "lecs-messaging.firebaseapp.com",
+    projectId: "lecs-messaging",
+    storageBucket: "lecs-messaging.appspot.com",
+    messagingSenderId: "539453436104",
+    appId: "1:539453436104:web:e0a5a4e793f40b04f4f5fd"
+  
+});
+
+const auth = getAuth(firebaseapp);
+const db = getFirestore(firebaseapp);
+// db.collection('todos').getDocs();
+// const todoCol = collection(db,'todos'); 
+// const snapshots = await getDocs(todoCol);
+
+
+
+//detect auth state
+
+onAuthStateChanged(auth,user => {
+    if(user == null){
+        console.log('No user');
+    }else{
+        console.log('logged in');
+    }
+});
+
+
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
@@ -39,22 +72,22 @@
 // // // Initialize Firebase
 
 // // Required for side-effects
-const firebaseConfig = { 
-  apiKey: "AIzaSyAbEc5jQBHJ22W0Oe69Foh_kXH9iSGaf38",
-  authDomain: "lecs-messaging.firebaseapp.com",
-  projectId: "lecs-messaging",
-  storageBucket: "lecs-messaging.appspot.com",
-  messagingSenderId: "539453436104",
-  appId: "1:539453436104:web:e0a5a4e793f40b04f4f5fd"
-  };
-  console.log("firebase config done");
+// const firebaseConfig = { 
+//   apiKey: "AIzaSyAbEc5jQBHJ22W0Oe69Foh_kXH9iSGaf38",
+//   authDomain: "lecs-messaging.firebaseapp.com",
+//   projectId: "lecs-messaging",
+//   storageBucket: "lecs-messaging.appspot.com",
+//   messagingSenderId: "539453436104",
+//   appId: "1:539453436104:web:e0a5a4e793f40b04f4f5fd"
+//   };
+//   console.log("firebase config done");
 
-  const app = initializeApp(firebaseConfig);
-  const provider = new GoogleAuthProvider(app);
-  const auth = getAuth(app);
+//   const app = initializeApp(firebaseConfig);
+//   const provider = new GoogleAuthProvider(app);
+//   const auth = getAuth(app);
 
 
-console.log("adding eventlistner for button")
+// console.log("adding eventlistner for button")
 
 // // Initialize Cloud Firestore and get a reference to the service
 // const db = getFirestore(app);
