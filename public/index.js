@@ -24,11 +24,27 @@ const db = getFirestore(firebaseapp);
 //detect auth state
 
 onAuthStateChanged(auth,user => {
-    if(user == null){
-        console.log('No user');
-    }else{
-        console.log('logged in');
-    }
+    // if(user == null){
+    //     console.log('No user');
+    // }else{
+    //     auth.signOut();
+    //     console.log(auth);
+    //     console.log('logged in');
+    // }
+
+    if (user) {
+// signed in
+document.getElementById("whenSignedIn").hidden = false;
+document.getElementById("whenSignedOut").hidden = true;
+document.getElementById("userDetails").innerHTML = `<p>Hello ${user.displayName.split(" ")[0]} !</p> `;
+document.getElementById("userdp").src = user.photoURL;
+
+} else {
+// not signed in
+document.getElementById("whenSignedIn").hidden = true;
+document.getElementById("whenSignedOut").hidden = false;
+document.getElementById("userDetails").innerHTML = '';
+}
 });
 
 

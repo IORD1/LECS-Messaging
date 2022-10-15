@@ -1,5 +1,5 @@
 
-console.log(1);
+console.log("splashed");
 const splash = document.querySelector('.splash');
 
 document.addEventListener('DOMContentLoaded',(e) => {
