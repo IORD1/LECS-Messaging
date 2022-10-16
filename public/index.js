@@ -73,6 +73,12 @@ signInWithPopup(auth, provider)
 
 document.getElementById("signOutBtn").onclick = () => auth.signOut();
 
+console.log("reading docs");
+const querySnapshot = await getDocs(collection(db, "test"));
+querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  console.log(`${doc.id} => ${doc.data()}`);
+});
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
