@@ -1,7 +1,7 @@
 
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js';
 import { getAuth, onAuthStateChanged,GoogleAuthProvider,signInWithPopup} from 'https://www.gstatic.com/firebasejs/9.11.0/firebase-auth.js';
-import { getFirestore,collection,getDocs,getDoc } from 'https://www.gstatic.com/firebasejs/9.11.0/firebase-firestore.js';
+import { getFirestore,collection,getDocs,setDoc,doc,addDoc } from 'https://www.gstatic.com/firebasejs/9.11.0/firebase-firestore.js';
 
 const firebaseapp = initializeApp({
     apiKey: "AIzaSyAbEc5jQBHJ22W0Oe69Foh_kXH9iSGaf38",
@@ -71,13 +71,19 @@ signInWithPopup(auth, provider)
 });
 
 
+function senddata(){
+  console.log("datasent");
+  alert("data sent");
+}
+
+document.getElementById("send").onclick = senddata();
 document.getElementById("signOutBtn").onclick = () => auth.signOut();
 
 console.log("reading docs");
 const querySnapshot = await getDocs(collection(db, "test"));
 querySnapshot.forEach((doc) => {
   // doc.data() is never undefined for query doc snapshots
-  console.log(`${doc.id} => ${doc.data()}`);
+  console.log(`${doc.id} => ${doc.data().name}`);
 });
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
