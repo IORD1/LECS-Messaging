@@ -71,12 +71,21 @@ signInWithPopup(auth, provider)
 });
 
 
-function senddata(){
-  console.log("datasent");
-  alert("data sent");
-}
 
-document.getElementById("send").onclick = senddata();
+send.addEventListener('click', () => {
+
+  console.log("clicked");
+  try {
+    const docRef = await addDoc(collection(db, "test"), {
+    name : "pratham"
+      });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+
+});
+
 document.getElementById("signOutBtn").onclick = () => auth.signOut();
 
 console.log("reading docs");
@@ -86,7 +95,7 @@ querySnapshot.forEach((doc) => {
   console.log(`${doc.id} => ${doc.data().name}`);
 });
 
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>addDoc>>>>>>>>>>>>>>>>>>>>>>>
 
 
 // function sendtext(){
