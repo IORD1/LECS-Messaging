@@ -75,16 +75,24 @@ signInWithPopup(auth, provider)
 send.addEventListener('click', () => {
 
   console.log("clicked");
+  // Add a new document with a generated id.
   try {
     const docRef = await addDoc(collection(db, "test"), {
-    name : "pratham"
-      });
+      name: "Praham",
+      sendern: "Japan"
+    });
     console.log("Document written with ID: ", docRef.id);
-  } catch (e) {
-    console.error("Error adding document: ", e);
+  }
+  catch(err) {
+    // Block of code to handle errors
+    console.log("errror occured");
   }
 
+
+
 });
+
+
 
 document.getElementById("signOutBtn").onclick = () => auth.signOut();
 
