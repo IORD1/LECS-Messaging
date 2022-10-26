@@ -76,16 +76,12 @@ send.addEventListener('click', () => {
 
   console.log("clicked");
   // Add a new document with a generated id.
-  db.collection("cities").add({
-    name: "Tokyo",
-    country: "Japan"
-})
-.then((docRef) => {
-    console.log("Document written with ID: ", docRef.id);
-})
-.catch((error) => {
-    console.error("Error adding document: ", error);
-});
+  const res = await db.collection('test').add({
+    name: 'Tokyo',
+    sendern: 'Japan'
+  });
+
+  console.log('Added document with ID: ', res.id);
 
 
 
