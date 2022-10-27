@@ -301,6 +301,18 @@ body{
   }
 }
 
+
+@keyframes adjust2 {
+  0%{
+    height: 35%;
+  }
+  50%{
+    height: 35%;
+  }
+  100% {
+    height:85%;
+  }
+}
 #mainpage{
   height: 80vh;
   width: 100vw;
@@ -331,6 +343,7 @@ body{
   background-color: white;
   margin: 15px auto auto 20px;
   padding-left: 30px;
+  animation: adjust2  4s forwards;
 }
 
 #send{
@@ -345,6 +358,7 @@ body{
   border: none;
   font-family: 'Quantico', sans-serif;
   margin: 15px 20px auto auto;
+  animation: adjust2  4s forwards;
 }
 
 

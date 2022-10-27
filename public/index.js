@@ -1,20 +1,24 @@
 
-import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js';
-import { getAuth, onAuthStateChanged,GoogleAuthProvider,signInWithPopup} from 'https://www.gstatic.com/firebasejs/9.11.0/firebase-auth.js';
-import { getFirestore,collection,getDocs,setDoc,doc,addDoc } from 'https://www.gstatic.com/firebasejs/9.11.0/firebase-firestore.js';
+import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js';
+import { getAuth, onAuthStateChanged,GoogleAuthProvider,signInWithPopup} from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js';
+import { getFirestore,collection,getDocs,setDoc,doc,addDoc } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js';
+import {getDatabase, ref, set } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js';
 
 const firebaseapp = initializeApp({
-    apiKey: "AIzaSyAbEc5jQBHJ22W0Oe69Foh_kXH9iSGaf38",
-    authDomain: "lecs-messaging.firebaseapp.com",
-    projectId: "lecs-messaging",
-    storageBucket: "lecs-messaging.appspot.com",
-    messagingSenderId: "539453436104",
-    appId: "1:539453436104:web:e0a5a4e793f40b04f4f5fd"
-  
+  apiKey: "AIzaSyDURV-9NnakYNiBlyMUbIqykhOl2hQCYQ0",
+  authDomain: "lecs-chat.firebaseapp.com",
+  projectId: "lecs-chat",
+  storageBucket: "lecs-chat.appspot.com",
+  messagingSenderId: "199711899591",
+  appId: "1:199711899591:web:fe8db5b1909721243163e2",
+  measurementId: "G-R3CLB772MX",
+  databaseURL: "https://lecs-chat-default-rtdb.asia-southeast1.firebasedatabase.app/"
 });
 
 const auth = getAuth(firebaseapp);
 const db = getFirestore(firebaseapp);
+const database = getDatabase(firebaseapp);
+
 // db.collection('todos').getDocs();
 // const todoCol = collection(db,'todos'); 
 // const snapshots = await getDocs(todoCol);
@@ -76,13 +80,30 @@ send.addEventListener('click', () => {
 
   console.log("clicked");
   // Add a new document with a generated id.
-  const res = await db.collection('test').add({
-    name: 'Tokyo',
-    sendern: 'Japan'
+  var enterMessage = document.getElementById("sendinput").value;
+  console.log(enterMessage);
+  console.log(auth.currentUser.displayName);
+  const d = new Date().toLocaleString();
+  let timenow = "";
+  for(let i=0;i<20; i++){
+    if(d[i] != "/" && d[i] != "," && d[i] != ":" && d[i] != " "){
+      timenow = timenow + d[i];
+    }
+  }
+  timenow = parseInt(timenow);
+  console.log(timenow);
+  console.log(d);
+  set(ref(database, "People/"+timenow),{
+    Name: auth.currentUser.displayName,
+    Message : enterMessage,
+    time:  d
+  })
+  .then(()=>{
+      console.log("Data added successfully");
+  })
+  .catch((error)=>{
+      alert(error);
   });
-
-  console.log('Added document with ID: ', res.id);
-
 
 
 });
