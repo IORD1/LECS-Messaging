@@ -2,31 +2,25 @@
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js';
 import { getAuth, onAuthStateChanged,GoogleAuthProvider,signInWithPopup} from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js';
 import { getFirestore,collection,getDocs,setDoc,doc,addDoc } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js';
-import {getDatabase, ref, set } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js';
+import {getDatabase, ref, set,onValue } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js';
 
 const firebaseapp = initializeApp({
   apiKey: "AIzaSyDURV-9NnakYNiBlyMUbIqykhOl2hQCYQ0",
   authDomain: "lecs-chat.firebaseapp.com",
+  databaseURL: "https://lecs-chat-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "lecs-chat",
   storageBucket: "lecs-chat.appspot.com",
   messagingSenderId: "199711899591",
   appId: "1:199711899591:web:fe8db5b1909721243163e2",
-  measurementId: "G-R3CLB772MX",
-  databaseURL: "https://lecs-chat-default-rtdb.asia-southeast1.firebasedatabase.app/"
-});
+  measurementId: "G-R3CLB772MX"});
 
 const auth = getAuth(firebaseapp);
 const db = getFirestore(firebaseapp);
 const database = getDatabase(firebaseapp);
 
-// db.collection('todos').getDocs();
-// const todoCol = collection(db,'todos'); 
-// const snapshots = await getDocs(todoCol);
-
 
 
 //detect auth state
-
 onAuthStateChanged(auth,user => {
 
     if (user) {
@@ -74,11 +68,10 @@ signInWithPopup(auth, provider)
 });
 });
 
-
+$("display").html('');
 
 send.addEventListener('click', () => {
-
-  console.log("clicked");
+  
   // Add a new document with a generated id.
   var enterMessage = document.getElementById("sendinput").value;
   console.log(enterMessage);
@@ -91,15 +84,28 @@ send.addEventListener('click', () => {
     }
   }
   timenow = parseInt(timenow);
-  console.log(timenow);
-  console.log(d);
+  // console.log(timenow);
+  // console.log(d);
+
+
+  // var linkeditdelete = '<li>'+
+  // '<a href="#" >✓</a>' + 
+  // '<button></button>' +
+  // '</li>';
+
+  // $("#display").append(linkeditdelete);
+
+
   set(ref(database, "People/"+timenow),{
     Name: auth.currentUser.displayName,
     Message : enterMessage,
-    time:  d
+    time:  d,
+    dp : auth.currentUser.photoURL
   })
   .then(()=>{
       console.log("Data added successfully");
+      document.getElementById("sendinput").value = "";
+      document.getElementById("sendinput").placeholder = "Data sent successfully";
   })
   .catch((error)=>{
       alert(error);
@@ -112,12 +118,38 @@ send.addEventListener('click', () => {
 
 document.getElementById("signOutBtn").onclick = () => auth.signOut();
 
-console.log("reading docs");
-const querySnapshot = await getDocs(collection(db, "test"));
-querySnapshot.forEach((doc) => {
-  // doc.data() is never undefined for query doc snapshots
-  console.log(`${doc.id} => ${doc.data().name}`);
+
+
+var counter = 0;
+
+const starCountRef = ref(database, 'People/' );
+onValue(starCountRef, (snapshot) => {
+  const data = snapshot.val();
+  document.getElementById("display").innerHTML = "";
+  $("display").html('');
+  for (const key in data){
+    if(data.hasOwnProperty(key)){
+      console.log(`${key} : ${data[key].Message}`)
+
+        var linkeditdelete =  '<div class="chat">'+
+                              '  <div class="chatdp">'+
+                              '    <img src="'+
+                                  data[key].dp +
+                              '" id="chatdp1">'+
+                              '  </div>'+
+                              '  <div class="message-body">'+
+                                  data[key].Message +
+                              '  </div>'+
+                              '</div>'
+        $("#display").append(linkeditdelete);
+
+    }
+  }
+  console.log(counter ,data);
+  counter++;
+  
 });
+
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>addDoc>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -268,3 +300,11 @@ querySnapshot.forEach((doc) => {
 
 
 // document.getElementById("signOutBtn").onclick = () => auth.signOut();
+
+
+  // console.log(data.replace(/^\{(.*)\}$/,"[$1]"));
+  // const myJSON = JSON.stringify(data);
+  // const replaced = myJSON.replace('{', '[');
+  // var replaced2 = replaced.replace(/.$/, ']');
+  // replaced2 = '{"array":' + replaced2 + '}';
+  // const newData = JSON.parse(replaced2);
